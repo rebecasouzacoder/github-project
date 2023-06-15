@@ -1,27 +1,65 @@
-# CaienaFront
+<h2 align="center">Tópicos 📋</h2>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+   <p>
+   
+   - [Sobre 📖](#sobre-)
+   - [Layout 🎨](#layout-)
+   - [Como Usar 🤔](#como-usar-)
 
-## Development server
+   </p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+<h2 align="center">Sobre 📖</h2>
+   
+<p>
+   O projeto  desenvolvido trata-se de uma aplicação integrada com o GitHub onde é possível realizar buscas de
+   usuários da plataforma e visualizar informações básicas do mesmo. <br>
+</p>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+<h2 align="center">Layout 🎨</h2>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   <p align="center">
+      <img alt="Layout" title="PayFlow" src=".github/layout.png" />
+   </p>
 
-## Running unit tests
+   <p align="center">
+      O Layout foi desenvolvido por <a href="https://www.linkedin.com/in/rebeca-ribeiro-044374173/">Rebeca Ribeiro</a>, e você pode acessá-lo no Figma:
+   
+   - <a href="https://www.figma.com/file/FU5UANvDlsS9Zbn6bbp2vn/Teste-Caiena?type=design&node-id=6-1006&t=QxvVaoMtO4T22ON3-0">Front</a> 📱
+   </p>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Paleta de cores
 
-## Running end-to-end tests
+color: $clr-primary:; //Exemplo de uso
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+| Nome da Cor                | Hexadecimal |
+| -------------------------- | ----------- |
+| $clr-primary: ![#19141C]   |
+| $clr-secondary: ![#351349] |
+| $clr-tertiary: ![#837E9F]  |
+| $clr-light: ![#E2D3E7]     |
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<h2 align="center">Como Usar 🤔</h2>
+
+```
+- Clone esse repositório:
+$ git clone https://github.com/rebecasouzacoder/github-project.git
+
+- Entre no diretório:
+$ cd  github-project
+
+- Instale as dependências:
+$ npm i
+
+- Inicie o app:
+$ npm run start
+```
+
+---
+
+<!--END_SECTION:footer-->

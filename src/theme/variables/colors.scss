@@ -20,7 +20,7 @@ $colorTokens: map-get($tokens, 'color');
 .g-bg-secondary { @include background-color('secondary'); }
 .g-bg-light { @include background-color('light'); }
 
-$clr-primary: #133A3B;
-$clr-secondary: #00837F;
-$clr-tertiary: #068E87;
-$clr-light: #F2F4EF;
+$clr-primary: #19141C;
+$clr-secondary: #351349;
+$clr-tertiary: #837E9F;
+$clr-light: #E2D3E7;
