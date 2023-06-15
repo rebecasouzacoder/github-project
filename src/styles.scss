@@ -8,14 +8,15 @@ body {
 }
 
 body {
-  background: linear-gradient(
-  rgb(18, 0, 27) 24%,
-  rgb(0, 13, 112) 65%,
-  rgb(67, 0, 75) 100%);
+  background-image: url('./assets/png/bg-home.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 body {
   margin: 0;
   font-family: $font-family;
+  overflow-x: hidden;
+
 }
 
 .justify-content-between {
@@ -56,3 +57,4 @@ body {
         float: left;
     }
 }
+
