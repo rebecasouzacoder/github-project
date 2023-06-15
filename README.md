@@ -37,10 +37,10 @@ color: $clr-primary:; //Exemplo de uso
 
 | Nome da Cor                | Hexadecimal |
 | -------------------------- | ----------- |
-| $clr-primary: ![#19141C]   |
-| $clr-secondary: ![#351349] |
-| $clr-tertiary: ![#837E9F]  |
-| $clr-light: ![#E2D3E7]     |
+| $clr-primary | ![#19141C]   |
+| $clr-secondary| ![#351349] |
+| $clr-tertiary| ![#837E9F]  |
+| $clr-light| ![#E2D3E7]     |
 
 ---
 
