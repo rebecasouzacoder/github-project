@@ -1,0 +1,37 @@
+mat-card {
+  background: rgba(25, 20, 28, 0.23);
+  box-shadow: 2px 10px 10px 1px #37124d;
+  border-radius: 20px;
+}
+
+
+.textfield {
+    width: 100%;
+    display: flex;
+    margin: 10px 0px;
+  }
+  
+  .textfield > input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #d9d9d9;
+    background-image: url('../../../../assets/png/search.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: 95%;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+  }
+  
+  .textfield > label {
+    color: #000000de;
+    margin-bottom: 10px;
+  }
+  
+  .textfield > input::placeholder {
+    color: #03030394;
+  }
