@@ -8,12 +8,15 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CardUsersComponent } from './components/card-users/card-users.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
     CardSearchComponent,
     CardUsersComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    LoadingComponent
   ],
   imports: [
     MatIconModule,
@@ -21,7 +24,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule, 
-    CommonModule
+    MatProgressSpinnerModule,
+    CommonModule,
   ], 
   exports: [
     MatIconModule,
@@ -32,7 +36,9 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     CardSearchComponent,
     CardUsersComponent,
     PaginatorComponent,
-    CommonModule
+    CommonModule,
+    LoadingComponent,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }
