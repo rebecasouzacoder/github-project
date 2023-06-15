@@ -1,0 +1,26 @@
+@import './tokens.scss';
+
+$colorTokens: map-get($tokens, 'color');
+
+@mixin color($color, $opacity: 1) {
+  color: rgba(map-get($colorTokens, $color), $opacity) !important;
+}
+
+@mixin background-color($color, $opacity: 1) {
+  background-color: rgba(map-get($colorTokens, $color), $opacity) !important;
+}
+
+.g-clr-primary { @include color('primary'); }
+.g-clr-secondary { @include color('secondary'); }
+.g-clr-tertiary { @include color('tertiary'); }
+.g-clr-light { @include color('light'); }
+
+
+.g-bg-primary { @include background-color('primary'); }
+.g-bg-secondary { @include background-color('secondary'); }
+.g-bg-light { @include background-color('light'); }
+
+$clr-primary: #133A3B;
+$clr-secondary: #00837F;
+$clr-tertiary: #068E87;
+$clr-light: #F2F4EF;

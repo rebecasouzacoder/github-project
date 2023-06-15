@@ -1,0 +1,36 @@
+@import "./tokens";
+
+
+
+.g-font-title-1 {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 50px;
+}
+
+.g-font-subtitle-1 {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 29px;
+}
+.g-font-legend-1 {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.g-font-legend-2 {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+

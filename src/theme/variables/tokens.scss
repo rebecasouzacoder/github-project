@@ -1,0 +1,13 @@
+$font-family: 'Merriweather Sans';
+
+$colorMap: (
+  "primary": #19141C,
+  "secondary": #37124D,
+  "tertiary": #837E9F,
+  "light": #f2f4ef,
+  "white": #ffffff,
+);
+
+$tokens: (
+  color: $colorMap,
+);
