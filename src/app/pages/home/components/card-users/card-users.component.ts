@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { GithubService } from 'src/app/core/github-service/github.service';
+import { ModalService } from 'src/app/core/modal-service/modal.service';
+import { IUsersResponse, Item } from 'src/app/shared/models/users-response';
 
 @Component({
   selector: 'app-card-users',
@@ -6,14 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-users.component.scss']
 })
 export class CardUsersComponent implements OnInit {
-  public listUsers!: any
+  public listUsers!: Item[];
+  public lastApiCall!: string;
+
+  constructor(private modalService: ModalService, private githubService: GithubService) {}
   
   ngOnInit(): void {
-    let array = [];
+    this.observableApi();
+  
+   
+}
 
-   for (let i = 1; i <= 20; i++) {
-  array.push(i);
-  this.listUsers = array
-   }
+
+ observableApi() {
+  this.githubService.getEvent().subscribe((eventName: IUsersResponse) => {
+    this.listUsers  = eventName.items;
+  });
+
+}
+
+clickOpenDetail(user: string) {
+  this.modalService.openModalProfile(user)
 }
 }

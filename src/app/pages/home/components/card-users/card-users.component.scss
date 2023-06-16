@@ -1,4 +1,5 @@
-@import 'src/theme/app'; 
+@import 'src/theme/app';
+
 
 .container-card
 {
@@ -93,6 +94,8 @@
 
 .container-card .box .content
 {
+  min-width: 200px;
+  max-width: 200px;
   position: relative;
   left: 0;
   padding: 20px 40px;
@@ -110,6 +113,13 @@
   display: flex;
   cursor: pointer;
   width: 100%;
+
+  img {
+    border-radius: 50%;
+    max-width: 50px;
+    max-height: 50px;
+    margin-bottom: 20px;
+  }
 }
 
 .container-card .box:hover .content

@@ -7,10 +7,16 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { LoadingComponent } from './components/loading/loading.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { GithubService } from '../core/github-service/github.service';
+import { CardErrorComponent } from './components/card-error/card-error.component';
 
 @NgModule({
   declarations: [
-    LoadingComponent
+    LoadingComponent,
+    CardErrorComponent
   ],
   imports: [
     MatIconModule,
@@ -20,6 +26,11 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatFormFieldModule, 
     MatProgressSpinnerModule,
     CommonModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientModule,
   ], 
   exports: [
     MatIconModule,
@@ -29,7 +40,14 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatFormFieldModule,
     CommonModule,
     LoadingComponent,
-    MatProgressSpinnerModule
-  ]
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    HttpClientModule,
+    CardErrorComponent
+  ],
+  providers: [GithubService]
 })
 export class SharedModule { }

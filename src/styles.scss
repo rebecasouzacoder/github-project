@@ -58,3 +58,8 @@ body {
     }
 }
 
+
+
+.custom-modalbox > mat-dialog-container {
+  background-color: transparent !important;
+}

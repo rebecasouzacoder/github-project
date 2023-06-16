@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CardSearchComponent } from './home/components/card-search/card-search.component';
 import { CardUsersComponent } from './home/components/card-users/card-users.component';
 import { PaginatorComponent } from './home/components/paginator/paginator.component';
+import { GithubService } from '../core/github-service/github.service';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { PaginatorComponent } from './home/components/paginator/paginator.compon
   imports: [
     SharedModule,
     PagesRoutingModule
-  ]
+  ],
+  providers: [GithubService]
 })
 export class PagesModule { }

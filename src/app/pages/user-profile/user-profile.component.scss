@@ -17,13 +17,15 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-bottom: 10px;
-    display: flex;
     justify-content: center;
     text-align: center;
 
+   
+
     img {
-        width: 30vh;
-        height: 30vh;
+      border-radius: 50%;
+      width: 25vh;
+      height: 25vh;
     }
   }
   
@@ -39,10 +41,20 @@
     box-shadow: 0 2px 4px rgba(246, 0, 250, 0.1);
     padding: 20px;
     margin-bottom: 10px;
+
+  
+    
   }
   
   .btn-pg {
     border-radius: 30px;
     background-color: black!important;
     width: 150px;
+  }
+
+   p {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
