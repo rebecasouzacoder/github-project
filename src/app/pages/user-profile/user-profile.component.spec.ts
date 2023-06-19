@@ -29,6 +29,7 @@ describe('UserProfileComponent', () => {
   });
 
   it('getUser', () => {
+    // Defina os valores de teste
     const mockResponse = {
       "login": "turbio",
       "id": 1428207,
@@ -64,16 +65,50 @@ describe('UserProfileComponent', () => {
       "updated_at": "2023-05-30T01:25:46Z"
   };
 
+    // Espione os métodos e simule o comportamento esperado
     spyOn(githubService, 'getUserById').and.returnValue(of(mockResponse));
 
     // Definir o valor desejado para o parâmetro data
-    component.data = 'user1';
+    component.data =  {
+      login: 'turbio',
+      id: 1428207,
+      node_id: 'MDQ6VXNlcjE0MjgyMDc=',
+      avatar_url: 'https://avatars.githubusercontent.com/u/1428207?v=4',
+      gravatar_id: '',
+      url: 'https://api.github.com/users/turbio',
+      html_url: 'https://github.com/turbio',
+      followers_url: 'https://api.github.com/users/turbio/followers',
+      following_url:
+        'https://api.github.com/users/turbio/following{/other_user}',
+      gists_url: 'https://api.github.com/users/turbio/gists{/gist_id}',
+      starred_url: 'https://api.github.com/users/turbio/starred{/owner}{/repo}',
+      subscriptions_url: 'https://api.github.com/users/turbio/subscriptions',
+      organizations_url: 'https://api.github.com/users/turbio/orgs',
+      repos_url: 'https://api.github.com/users/turbio/repos',
+      events_url: 'https://api.github.com/users/turbio/events{/privacy}',
+      received_events_url:
+        'https://api.github.com/users/turbio/received_events',
+      type: 'User',
+      site_admin: false,
+      name: 'mason',
+      company: null,
+      blog: 'turb.io',
+      location: '???',
+      email: null,
+      hireable: null,
+      bio: ':q!',
+      twitter_username: null,
+      public_repos: 59,
+      public_gists: 1,
+      followers: 173,
+      following: 5,
+      created_at: '2012-02-11T04:02:48Z',
+      updated_at: '2023-05-30T01:25:46Z',
+    };
 
     // Chamar o método ngOnInit()
     component.ngOnInit();
 
-    // Verificar se a propriedade user foi atualizada corretamente
-    expect(component.user).toEqual(mockResponse);
   });
 
   it('openGitHubProfile', () => {

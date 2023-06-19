@@ -1,5 +1,7 @@
+@import 'src/theme/app';
+
 .btn-pg {
     border-radius: 30px;
-    background-color: black!important;
+    background-color: $clr-black!important;
     width: 150px;
   }

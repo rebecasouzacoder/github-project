@@ -10,19 +10,12 @@ import { Item } from 'src/app/shared/models/users-response';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  public user!: IUserByIdResponse
 
-  constructor(private githubService: GithubService, public dialogRef: MatDialogRef<UserProfileComponent>, @Inject(MAT_DIALOG_DATA) public data: string,) {}
+  constructor(private githubService: GithubService, public dialogRef: MatDialogRef<UserProfileComponent>, @Inject(MAT_DIALOG_DATA) public data: IUserByIdResponse,) {}
  
   ngOnInit(): void {
-    this.getUser()
   }
 
-  getUser() {
-    this.githubService.getUserById(this.data).subscribe((result: IUserByIdResponse) => {
-      this.user = result;
-    })
-  }
 
   openGitHubProfile(link: string) {
     window.open(link, '_blank')

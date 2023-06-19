@@ -5,13 +5,16 @@ import {
 import { TestBed } from '@angular/core/testing';
 import { GithubService } from './github.service';
 import { environment } from 'src/environments/environment.prod';
-import { Operator, Observable, of } from 'rxjs';
+import { Operator, Observable, of, throwError } from 'rxjs';
 import { IUsersResponse } from 'src/app/shared/models/users-response';
+import { IError } from 'src/app/shared/models/error';
 
 describe('GithubService', () => {
   let service: GithubService;
   let httpTestingController: HttpTestingController;
+  let component: GithubService;
 
+  // Variáveis de exemplo para simular uma resposta de usuário
   var mockResponseUsers = {
     total_count: 8854,
     incomplete_results: false,
@@ -46,6 +49,7 @@ describe('GithubService', () => {
       providers: [GithubService],
     });
     service = TestBed.inject(GithubService);
+    component = TestBed.inject(GithubService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
@@ -53,40 +57,54 @@ describe('GithubService', () => {
     httpTestingController.verify();
   });
 
-  it('emitEvent', () => {
-    const eventName = 'myEvent';
+  it('should emitEvent getUsers() is successful', () => {
+    // Defina os valores de teste
+    const eventName = 'some-event';
     const page = 1;
 
-    // Espionar o método emitEventLoading
-    spyOn(service, 'emitEventLoading');
+    // Espione os métodos e simule o comportamento esperado
+    spyOn(service, 'getUsers').and.returnValue(of(mockResponseUsers)); // Use RxJS 'of' para criar um observable com um resultado simulado
+    spyOn(component.eventSubject, 'next');
+    spyOn(component, 'emitEventLoading');
+    spyOn(component, 'emitEventError');
 
-    // Espionar o método getUsers e retornar a resposta simulada
-    spyOn(service, 'getUsers').and.returnValue(of(mockResponseUsers));
+    // Chame o método sendo testado
+    component.emitEvent(eventName, page);
 
-    // Chamar o método emitEvent
-    service.emitEvent(eventName, page);
-
-    // Verificar se o método emitEventLoading foi chamado com o valor true
-    expect(service.emitEventLoading).toHaveBeenCalledWith(true);
-
-    // Verificar se o método getUsers foi chamado com os parâmetros corretos
+    // Verifique se o comportamento esperado ocorreu
+    expect(component.emitEventLoading).toHaveBeenCalledWith(true);
+    expect(component.emitEventError).toHaveBeenCalledWith({ error: false });
     expect(service.getUsers).toHaveBeenCalledWith(eventName, page);
-
-    // Verificar se o evento foi emitido corretamente
-    service.getEvent().subscribe(
-      (result) => {
-        expect(result).toEqual(mockResponseUsers);
-        expect(service.emitEventLoading).toHaveBeenCalledWith(false);
-        expect(service.emitEventError).toHaveBeenCalledWith(false);
-      },
-      (error) => {
-        expect(service.emitEventError).toHaveBeenCalledWith(true);
-        expect(service.emitEventLoading).toHaveBeenCalledWith(false);
-      }
-    );
+    expect(component.eventSubject.next).toHaveBeenCalledWith(mockResponseUsers);
+    expect(component.emitEventError).not.toHaveBeenCalledWith({ error: true });
+    expect(component.emitEventLoading).toHaveBeenCalledWith(false);
   });
 
-  it('emitEventLoading', () => {
+  it('should emitEvent getUsers() returns an error', () => {
+    // Defina os valores de teste
+    const eventName = 'some-event';
+    const page = 1;
+    const mockError = new Error('Some error message');
+
+    // Espione os métodos e simule o comportamento esperado
+    spyOn(service, 'getUsers').and.returnValue(throwError(mockError));
+    spyOn(component.eventSubject, 'next');
+    spyOn(component, 'emitEventLoading');
+    spyOn(component, 'emitEventError');
+
+    // Chame o método sendo testado
+    component.emitEvent(eventName, page);
+
+    // Verifique se o comportamento esperado ocorreu
+    expect(component.emitEventLoading).toHaveBeenCalledWith(true);
+    expect(component.emitEventError).toHaveBeenCalledWith({ error: false });
+    expect(service.getUsers).toHaveBeenCalledWith(eventName, page);
+    expect(component.eventSubject.next).not.toHaveBeenCalled();
+    expect(component.emitEventError).toHaveBeenCalledWith({ error: true });
+    expect(component.emitEventLoading).toHaveBeenCalledWith(true);
+  });
+
+  it('should emitEventLoading', () => {
     const loading = false;
 
     // Espionar o método next do  eventLoading
@@ -99,20 +117,21 @@ describe('GithubService', () => {
     expect(service.eventLoading.next).toHaveBeenCalledWith(loading);
   });
 
-  it('emitEventError', () => {
-    const error = false;
-
+  it('should emitEventError', () => {
     // Espionar o método next do  eventError
     spyOn(service.eventError, 'next');
 
     // Chamar o método emitEventError
-    service.emitEventError(error);
+    service.emitEventError({ error: false, message: '' });
 
     // Verificar se o método next do eventError foi chamado com o valor correto
-    expect(service.eventError.next).toHaveBeenCalledWith(error);
+    expect(service.eventError.next).toHaveBeenCalledWith({
+      error: false,
+      message: '',
+    });
   });
 
-  it('getEvent', () => {
+  it('should getEvent', () => {
     // Chamar o método getEvent
     const result = service.getEvent();
 
@@ -126,7 +145,7 @@ describe('GithubService', () => {
     });
   });
 
-  it('getEventLoading', () => {
+  it('should getEventLoading', () => {
     // Chamar o método getEventLoading
     const result = service.getEventLoading();
 
@@ -140,7 +159,7 @@ describe('GithubService', () => {
     });
   });
 
-  it('getEventError', () => {
+  it('should getEventError', () => {
     const result = service.getEventError();
 
     // Verificar se o resultado é um Observable
@@ -148,24 +167,29 @@ describe('GithubService', () => {
     expect(result.subscribe).toBeDefined();
 
     // Verificar o tipo do resultado
-    result.subscribe((response: boolean) => {
+    result.subscribe((response: IError) => {
       expect(response).toBeDefined();
     });
   });
 
-  it('getUsers', () => {
+  it('should getUsers', () => {
+    // Chamar o método getUsers
     service.getUsers('username').subscribe((response) => {
       expect(response).toEqual(mockResponseUsers);
     });
 
+    // verifica se existe apenas uma solicitação HTTP pendente que corresponda à URL fornecida
     const req = httpTestingController.expectOne(
       `${environment.api_url}search/users?q=username&page=1&per_page=20`
     );
+    // verifica se o método HTTP da solicitação é 'GET'. Isso garante que a solicitação esteja usando o método correto.
     expect(req.request.method).toBe('GET');
+
+    //simula uma resposta bem-sucedida da API
     req.flush(mockResponseUsers);
   });
 
-  it('getUserById', () => {
+  it('should getUserById', () => {
     const mockResponse = {
       login: 'turbio',
       id: 1428207,
@@ -204,14 +228,18 @@ describe('GithubService', () => {
     };
     const username = 'johndoe';
 
+    // Chamar o método getUserById
     service.getUserById(username).subscribe((response) => {
       expect(response).toEqual(mockResponse);
     });
 
+    // verifica se existe apenas uma solicitação HTTP pendente que corresponda à URL fornecida
     const req = httpTestingController.expectOne(
       `${environment.api_url}users/${username}`
     );
+    // verifica se o método HTTP da solicitação é 'GET'. Isso garante que a solicitação esteja usando o método correto.
     expect(req.request.method).toBe('GET');
+    //simula uma resposta bem-sucedida da API
     req.flush(mockResponse);
   });
 });

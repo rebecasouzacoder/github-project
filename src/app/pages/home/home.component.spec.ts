@@ -4,6 +4,7 @@ import { GithubService } from 'src/app/core/github-service/github.service';
 import { of } from 'rxjs';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PagesModule } from '../pages.module';
+import { IError } from 'src/app/shared/models/error';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -12,10 +13,9 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SharedModule,
-      PagesModule],
+      imports: [SharedModule, PagesModule],
       declarations: [HomeComponent],
-      providers: [GithubService]
+      providers: [GithubService],
     }).compileComponents();
   });
 
@@ -25,21 +25,19 @@ describe('HomeComponent', () => {
     githubService = TestBed.inject(GithubService);
   });
 
-  it('observableApi return true', () => {
-    const mockErrorEvent = true;
-    spyOn(githubService, 'getEventError').and.returnValue(of(mockErrorEvent));
+  it('should observableApi', () => {
+    // Defina os valores de teste
+    const mockError: IError = { error: true, message: '' };
 
+    // Espione os métodos e simule o comportamento esperado
+    spyOn(githubService, 'getEventError').and.returnValue(of(mockError)); // Use RxJS 'of' para criar um observable com um resultado simulado
+    spyOn(githubService, 'emitEventLoading');
+
+    // Chame o método sendo testado
     component.ngOnInit();
 
-    expect(component.error).toBeTrue();
-  });
-
-  it('observableApi return false', () => {
-    const mockErrorEvent = false;
-    spyOn(githubService, 'getEventError').and.returnValue(of(mockErrorEvent));
-
-    component.ngOnInit();
-
-    expect(component.error).toBeFalse();
+    // Verifique se o comportamento esperado ocorreu
+    expect(component.error).toBe(mockError);
+    expect(githubService.emitEventLoading).toHaveBeenCalledWith(false);
   });
 });

@@ -11,13 +11,13 @@
 
       <div class="row">
         <div class="col-12">
-          <img src="{{ user?.avatar_url }}" alt="" />
-          <p class="g-font-subtitle-1">{{ user?.name }}</p>
-          <p class="g-font-legend-2">{{ user?.bio }}</p>
+          <img src="{{ data.avatar_url }}" alt="" />
+          <p class="g-font-subtitle-1">{{ data.name }}</p>
+          <p class="g-font-legend-2">{{ data.bio }}</p>
           <button
             mat-raised-button
             class="g-clr-btn btn-pg"
-            (click)="openGitHubProfile(user.html_url)"
+            (click)="openGitHubProfile(data.html_url)"
           >
             GitHub
           </button>
@@ -27,39 +27,39 @@
     <div class="card-2">
       <div class="g-marginTop-xs ml-negative content-details">
         <div class="d-flex flex-column col-auto">
-          <div class="d-flex align-items-center" *ngIf="user?.location">
+          <div class="d-flex align-items-center" *ngIf="data.location">
             <span class="font-caption-3r p-2"
               ><img src="assets/svg/map-pin.svg" alt="" />
             </span>
             <span class="font-caption-3b p-2 g-clr-light">{{
-              user.location
+              data.location
             }}</span>
           </div>
-          <div class="d-flex align-items-center mt-4" *ngIf="user?.login">
+          <div class="d-flex align-items-center mt-4" *ngIf="data.login">
             <span class="font-caption-3r p-2"
               ><img src="assets/svg/github.svg" alt=""
             /></span>
             <span class="font-caption-3b p-2 g-clr-light">{{
-              user?.login
+              data.login
             }}</span>
           </div>
           <div
             class="d-flex align-items-center mt-4 g-clr-light"
-            *ngIf="user?.twitter_username"
+            *ngIf="data.twitter_username"
           >
             <span class="font-caption-3r p-2"
               ><img src="assets/svg/twitter.svg" alt=""
             /></span>
-            <span class="font-caption-3b p-2">{{ user?.twitter_username }}</span>
+            <span class="font-caption-3b p-2">{{ data.twitter_username }}</span>
           </div>
           <div
             class="d-flex align-items-center mt-4 g-clr-light"
-            *ngIf="user?.blog"
+            *ngIf="data.blog"
           >
             <span class="font-caption-3r p-2"
               ><img src="assets/svg/globe.svg" alt=""
             /></span>
-            <span class="font-caption-3b p-2">{{ user?.blog }}</span>
+            <span class="font-caption-3b p-2">{{ data.blog }}</span>
           </div>
         </div>
       </div>

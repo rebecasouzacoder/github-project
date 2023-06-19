@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaginatorComponent } from './paginator.component';
 import { GithubService } from 'src/app/core/github-service/github.service';
 import { of } from 'rxjs';
-import { IUsersResponse } from 'src/app/shared/models/users-response';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
 
@@ -11,6 +10,7 @@ describe('PaginatorComponent', () => {
   let fixture: ComponentFixture<PaginatorComponent>;
   let githubService: GithubService;
 
+  // Defina os valores de teste
   var mockResponseUsers = {
     total_count: 8854,
     incomplete_results: false,
@@ -54,7 +54,8 @@ describe('PaginatorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('observableApi', () => {
+  it('should observableApi', () => {
+    // Espione os métodos e simule o comportamento esperado
     spyOn(githubService, 'getEvent').and.returnValue(of(mockResponseUsers));
 
     // Chamar o método ngOnInit()
@@ -64,7 +65,7 @@ describe('PaginatorComponent', () => {
     expect(component.totalCount).toBe(8854); // Verifique se o valor corresponde ao total_count mockado
   });
 
-  it('emitEvent', () => {
+  it('should emitEvent', () => {
     spyOn(githubService, 'emitEvent');
 
     // Chamar o método emitEvent com um valor de página

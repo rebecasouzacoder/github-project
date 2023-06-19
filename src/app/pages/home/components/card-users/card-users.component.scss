@@ -21,7 +21,7 @@
   width: 50%;
   height: 50%;
   text-decoration: none;
-  background: #fff;
+  background: $clr-light;
   border-radius: 8px;
   transform: skewX(15deg);
   transition: 0.5s;
@@ -40,7 +40,7 @@
 .container-card .box:nth-child(1):before,
 .container-card .box:nth-child(1):after
 {
-  background: linear-gradient(315deg, #4800ff, #ff0059f0)
+  background: linear-gradient(315deg, $clr-secondary, $clr-pink)
 }
 .container-card .box span
 {
@@ -67,7 +67,7 @@
   opacity: 0;
   transition: 0.1s;  
   animation: animate 2s ease-in-out infinite;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08)
+  box-shadow: 0 5px 15px $clr-black
 }
 
 .container-card .box:hover span:after
@@ -99,9 +99,9 @@
   position: relative;
   left: 0;
   padding: 20px 40px;
-  background-color: rgba(0, 0, 0, 0.766);
+  background-color: $clr-bg-card;
   backdrop-filter: blur(10px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px $clr-bg-card;
   border-radius: 8px;
   z-index: 1;
   transform: 0.5s;

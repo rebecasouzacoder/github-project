@@ -1,6 +1,8 @@
+@import 'src/theme/app'; 
+
 mat-card {
-    background-color: rgba(0, 0, 0, 0.632);
-    box-shadow: 2px 10px 10px 1px #37124d;
+    background-color: $clr-bg-card;
+    box-shadow: 2px 10px 10px 1px $clr-secondary;
     border-radius: 20px;
 
     img {

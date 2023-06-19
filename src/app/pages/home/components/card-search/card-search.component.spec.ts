@@ -25,7 +25,7 @@ describe('CardSearchComponent', () => {
     fixture.detectChanges();
   });
 
-  it('emitEvent', () => {
+  it('should emitEvent', () => {
     // Definir um valor para a propriedade searchCamp
     component.searchCamp = 'searchValue';
 

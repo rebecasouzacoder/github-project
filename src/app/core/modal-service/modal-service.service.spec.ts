@@ -7,44 +7,82 @@ import {
 import { ModalService } from './modal.service';
 import { UserProfileComponent } from 'src/app/pages/user-profile/user-profile.component';
 import { of } from 'rxjs';
+import { IUserByIdResponse } from 'src/app/shared/models/userById-response';
+import { ModalErrorComponent } from 'src/app/shared/components/modal-error/modal-error.component';
 
 describe('ModalService', () => {
-  let service: ModalService;
-  let matDialog: MatDialog;
+  let dialog: MatDialog;
+  let dialogRefMock: MatDialogRef<UserProfileComponent>;
+  let component: ModalService;
 
   beforeEach(() => {
+    dialogRefMock = jasmine.createSpyObj('MatDialogRef', ['close']);
     TestBed.configureTestingModule({
       providers: [
         ModalService,
         { provide: MatDialog, useValue: { open: () => {} } },
       ],
     });
-    service = TestBed.inject(ModalService);
-    matDialog = TestBed.inject(MatDialog);
+    dialog = TestBed.inject(MatDialog);
+    component = TestBed.inject(ModalService);
   });
 
-  it('openModalProfile', () => {
-    const params = 'params';
+  it('should openModalProfile ', () => {
+    // Defina os valores de teste
+    const mockResponse = {
+      login: 'turbio',
+      id: 1428207,
+      node_id: 'MDQ6VXNlcjE0MjgyMDc=',
+      avatar_url: 'https://avatars.githubusercontent.com/u/1428207?v=4',
+      gravatar_id: '',
+      url: 'https://api.github.com/users/turbio',
+      html_url: 'https://github.com/turbio',
+      followers_url: 'https://api.github.com/users/turbio/followers',
+      following_url:
+        'https://api.github.com/users/turbio/following{/other_user}',
+      gists_url: 'https://api.github.com/users/turbio/gists{/gist_id}',
+      starred_url: 'https://api.github.com/users/turbio/starred{/owner}{/repo}',
+      subscriptions_url: 'https://api.github.com/users/turbio/subscriptions',
+      organizations_url: 'https://api.github.com/users/turbio/orgs',
+      repos_url: 'https://api.github.com/users/turbio/repos',
+      events_url: 'https://api.github.com/users/turbio/events{/privacy}',
+      received_events_url:
+        'https://api.github.com/users/turbio/received_events',
+      type: 'User',
+      site_admin: false,
+      name: 'mason',
+      company: null,
+      blog: 'turb.io',
+      location: '???',
+      email: null,
+      hireable: null,
+      bio: ':q!',
+      twitter_username: null,
+      public_repos: 59,
+      public_gists: 1,
+      followers: 173,
+      following: 5,
+      created_at: '2012-02-11T04:02:48Z',
+      updated_at: '2023-05-30T01:25:46Z',
+    };
+
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.minWidth = '340px';
     dialogConfig.maxWidth = '600px';
-    dialogConfig.panelClass = 'custom-modalbox';
-    dialogConfig.data = params;
+    dialogConfig.data = mockResponse;
 
-    // Espionar o método open do MatDialog
-    spyOn(matDialog, 'open').and.returnValue({
-      afterClosed: () => of(true),
-    } as MatDialogRef<UserProfileComponent>);
+    // Espione os métodos e simule o comportamento esperado
+    spyOn(dialog, 'open').and.returnValue(dialogRefMock);
 
-    // Chamar o método openModalDynamic
-    service.openModalProfile(params);
+    const result = component.openModalProfile(mockResponse);
 
-    // Verificar se o método open do MatDialog foi chamado com os parâmetros corretos
-    expect(matDialog.open).toHaveBeenCalledWith(
+    // Verifique se o comportamento esperado ocorreu
+    expect(dialog.open).toHaveBeenCalledWith(
       UserProfileComponent,
       dialogConfig
     );
+    expect(result).toBe(dialogRefMock);
   });
 });

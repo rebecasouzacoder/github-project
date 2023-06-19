@@ -1,0 +1,11 @@
+@import 'src/theme/app'; 
+
+mat-card {
+  background-color: $clr-bg-card;
+  box-shadow: 2px 10px 10px 1px $clr-secondary;
+  height: 300px;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}

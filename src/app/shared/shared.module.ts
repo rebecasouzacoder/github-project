@@ -12,11 +12,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GithubService } from '../core/github-service/github.service';
 import { CardErrorComponent } from './components/card-error/card-error.component';
+import { ModalErrorComponent } from './components/modal-error/modal-error.component';
 
 @NgModule({
   declarations: [
     LoadingComponent,
-    CardErrorComponent
+    CardErrorComponent,
+    ModalErrorComponent
   ],
   imports: [
     MatIconModule,
