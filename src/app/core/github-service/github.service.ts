@@ -17,8 +17,8 @@ export class GithubService {
   constructor(private http: HttpClient) {}
 
   public emitEvent(eventName?: string, page?: number): void {
-    this.emitEventLoading(true);
     this.emitEventError({error: false});
+    this.emitEventLoading(true);
 
     this.getUsers(eventName, page).subscribe(
       (result) => {
