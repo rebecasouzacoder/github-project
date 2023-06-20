@@ -5,7 +5,7 @@
    - [Sobre 📖](#sobre-)
    - [Layout 🎨](#layout-)
    - [Como Usar 🤔](#como-usar-)
-   - [Estrutura do projeto](#estrutura)
+   - [Estrutura do projeto](#estrutura-do-projeto)
 
    </p>
 
