@@ -5,6 +5,7 @@
    - [Sobre 📖](#sobre-)
    - [Layout 🎨](#layout-)
    - [Como Usar 🤔](#como-usar-)
+   - [Estrutura do projeto](#estrutura)
 
    </p>
 
@@ -66,4 +67,15 @@ $ npm run start
 
 ---
 
+<h2 align="center">Estrutura do Projeto</h2>
+
+```
+- `/src/app/pages`: São as páginas do nosso projeto onde estarão disponível os Smart Components.
+- `/src/app/shared`: onde ficarão os Dumb Components, que são componentes que não fazem nada por conta própria.
+- `./src/app/core`: Arquivos essenciais para a aplicação.
+- `./src/theme`: Arquivos .scss que contém cores, fontes e tokens utilizados no desenvolvimento visual do sistema.
+
+```
+
 <!--END_SECTION:footer-->
+

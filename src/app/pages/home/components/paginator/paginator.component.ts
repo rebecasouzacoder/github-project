@@ -19,7 +19,7 @@ export class PaginatorComponent implements OnInit {
 
   emitEvent(page: any): void {
     this.page = page;
-    this.githubService.emitEvent('q', page);
+    this.githubService.emitEvent('a', page);
   }
 
   observableApi() {
