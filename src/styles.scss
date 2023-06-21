@@ -59,7 +59,14 @@ body {
 }
 
 
+body::-webkit-scrollbar {
+  width: 5px;               
+}
 
-.custom-modalbox > mat-dialog-container {
-  background-color: transparent !important;
+body::-webkit-scrollbar-track {
+  background: $clr-primary;       
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $clr-pink;      
 }
