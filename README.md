@@ -70,8 +70,8 @@ $ npm run start
 <h2 align="center">Estrutura do Projeto</h2>
 
 ```
-- `/src/app/pages`: São as páginas do nosso projeto onde estarão disponível os Smart Components.
-- `/src/app/shared`: onde ficarão os Dumb Components, que são componentes que não fazem nada por conta própria.
+- `/src/app/pages`: São as páginas do nosso projeto onde estarão disponíveis os Smarts Components.
+- `/src/app/shared`: Onde ficarão os Dumb Components, que são componentes que não fazem nada por conta própria.
 - `./src/app/core`: Arquivos essenciais para a aplicação.
 - `./src/theme`: Arquivos .scss que contém cores, fontes e tokens utilizados no desenvolvimento visual do sistema.
 

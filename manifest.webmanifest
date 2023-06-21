@@ -1,0 +1,16 @@
+{
+    "name": "Github.com",
+    "short_name": "Github",
+    "description": "Github.com",
+    "icons": [
+      {
+        "src": "favicon.ico",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/pages/home",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff"
+  }
